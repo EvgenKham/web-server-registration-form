@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: user-management-backend
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    healthCheckPath: /api/health
+    autoDeploy: true
+
+databases:
+  - name: user-management-db
+    databaseName: user_management_db
+    user: user_management_user
+    plan: free
